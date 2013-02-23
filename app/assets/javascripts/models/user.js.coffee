@@ -25,6 +25,9 @@ class Idt.Models.User extends Backbone.Model
   getId: ->
     @get('id')
 
+  setId: (id) ->
+    @set('id', id)
+
   setErrors: (errors) ->
     @set('errors', errors)
 

@@ -1,16 +1,25 @@
+<button class="add-user">Add User</button>
+
 <table id="products">
 <thead>
   <tr>
-    <th>Product Name</th>
-    <th>Category</th>
-    <th>Release Date</th>
-    <th>Price</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>UserName</th>
+    <th>Email</th>
+    <th>Action</th>
   </tr>
 </thead>
 <tbody>
   <% for user in @users: %>
     <tr>
-      <td><%= user.attributes.user.email %></td>
+      <td><%= user.attributes.first_name %></td>
+      <td><%= user.attributes.last_name %></td>
+      <td><%= user.attributes.user_name %></td>
+      <td><%= user.attributes.email %></td> 
+      <td>
+        <button class="delete-user" data-user-id="<%= user.attributes.id%>">Remove</button>
+      </td>
     </tr>
   <% end %>
 </tbody>

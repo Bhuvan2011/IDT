@@ -11,14 +11,15 @@ class Idt.Views.Main.LoginView extends Backbone.View
   initialize: ->
     console.log("Log in View has been Initialized")
     @users = new Idt.Collections.Users()
-    @users.fetch()
+    @users.fetch({success: @onFetchSuccess})
     console.log(@users)
-    @usersView = new Idt.Views.Main.UsersView(collection: @users) 
     Backbone.Mediator.sub('admin:page', @adminPage, @)
     
 
   # Properties:
-
+  #
+  onFetchSuccess: =>
+    @usersView = new Idt.Views.Main.UsersView(collection: @users) 
 
   # Methods:
 

@@ -1,0 +1,33 @@
+<h1> Add User ... </h1>
+<div class="add_user_form">
+  <h4>Add a User</h4>
+  <span id="user_errors"></span>
+  
+  <div>
+    <input id="first_name" type="text" placeholder="First Name (optional)" />
+  </div>
+
+   <div>
+    <input id="last_name_name" type="text" placeholder="Last Name (optional)" />
+  </div>
+
+ <div>
+    <input id="user_name" type="text" placeholder="User Name (optional)" />
+  </div>
+
+ <div>
+    <input id="email" type="text" placeholder="Email" />
+  </div>
+
+ <div>
+    <input id="password" type="password" placeholder="password" />
+  </div>
+
+ <div>
+    <input id="password_confirmation" type="password" placeholder="Confirm password" />
+  </div>
+
+  <div>
+    <button id="add_button">add</button>
+  </div>
+</div>
