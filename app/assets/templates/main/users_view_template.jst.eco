@@ -1,0 +1,17 @@
+<table id="products">
+<thead>
+  <tr>
+    <th>Product Name</th>
+    <th>Category</th>
+    <th>Release Date</th>
+    <th>Price</th>
+  </tr>
+</thead>
+<tbody>
+  <% for user in @users: %>
+    <tr>
+      <td><%= user.attributes.user.email %></td>
+    </tr>
+  <% end %>
+</tbody>
+</table>

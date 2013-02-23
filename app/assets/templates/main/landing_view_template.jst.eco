@@ -1,0 +1,7 @@
+ <div id="container">loding...</div>
+
+ <div>
+    <button class="btn" id="login_button">Login</button>
+    <button class="btn" id="registration_button">Register</button>
+  </div>
+

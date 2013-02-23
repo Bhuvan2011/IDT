@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>IDT</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+    <div id="container" style="max-width:360px; overflow: hidden;"></div>
+
+<%= yield %>
+
+ <script type="text/javascript">
+    $(document).ready(function(){
+      el = $('#container');
+      window.main = new Idt.Views.Main.MainView();
+      console.log("window.main.model",window.main.model);
+      el.append(window.main.render().el);
+    });
+    </script>
+
+
+</body>
+</html>
+

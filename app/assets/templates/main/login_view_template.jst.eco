@@ -1,0 +1,13 @@
+
+<div class="email_login">
+  <span id="errors"></span>
+  <div>
+    <input id="email" placeholder="Email Address" type="email" value="" />
+  </div>
+  <div>
+    <input id="password" placeholder="Password" type="password" value="" />
+  </div>
+  <div>
+    <button class="btn" id="login_button">Login</button>
+  </div>
+</div>
