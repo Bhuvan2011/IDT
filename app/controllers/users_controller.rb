@@ -12,7 +12,7 @@ class UsersController <  ApplicationController
   end
 
   def create
-    @user = User.new(params[:user].slice(:first_name, :last_name, :user_name, :email, :password, :password_confirmation))
+    @user = User.new(params[:user].slice(:first_name, :last_name, :user_name, :email))
     if @user.valid?
       @user.save!
     else

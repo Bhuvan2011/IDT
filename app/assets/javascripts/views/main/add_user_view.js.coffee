@@ -1,10 +1,10 @@
 Idt.Views.Main ||= {}
 
 class Idt.Views.Main.AddUserView extends Backbone.View
-  template: JST['main/add_user_view_template']
+  template: JST['main/add_user_view_template'] 
 
   events: ->
-    'click #add_button' : 'onClickAddButton'
+    # 'click #add_button' : 'onClickAddButton'
     'change #first_name': 'onChangeFirstName'
     'change #last_name': 'onChangeLastName'
     'change #user_name': 'onChangeUserName'
@@ -104,9 +104,8 @@ class Idt.Views.Main.AddUserView extends Backbone.View
     @setPassword(model.getPassword())
 
   onChangeModelPasswordConfirmation: (model) ->
-    @setPasswordConfirmation(model.getPasswordConfirmation())
+    @setPasswordConfirmation(model.getPasswordConfirmation())  
 
-   
   onClickAddButton: ->
     @model.save(null, success: @onSaveUser)
 

@@ -1,4 +1,3 @@
-<h1> Add User ... </h1>
 <div class="add_user_form">
   <h4>Add a User</h4>
   <span id="user_errors"></span>
@@ -19,15 +18,7 @@
     <input id="email" type="text" placeholder="Email" />
   </div>
 
- <div>
-    <input id="password" type="password" placeholder="password" />
-  </div>
-
- <div>
-    <input id="password_confirmation" type="password" placeholder="Confirm password" />
-  </div>
-
   <div>
-    <button id="add_button">add</button>
+    <button class="add-user">add</button>
   </div>
 </div>

@@ -1,4 +1,4 @@
-<button class="add-user">Add User</button>
+<button class="add-user-button">Add User</button>
 
 <table id="products">
 <thead>
@@ -12,10 +12,10 @@
 </thead>
 <tbody>
   <tr>
-    <td><input id="add_user_first_name" type="text" value="" /></td>
-    <td><input id="add_user_last_name" type="text" value="" /></td>
-    <td><input id="add_user_user_name" type="text" value="" /></td>
-    <td><input id="add_user_email" type="text" value="" /></td>
+    <td><input id="first_name" type="text" value="" /></td>
+    <td><input id="last_name" type="text" value="" /></td>
+    <td><input id="user_name" type="text" value="" /></td>
+    <td><input id="email" type="text" value="" /></td>
     <td>
       <button class="add-user">Add</button>
     </td>
