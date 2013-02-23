@@ -30,6 +30,42 @@ class Idt.Views.Main.AddUserView extends Backbone.View
   setFirstName: (first_name) ->
     first_name = "" if typeof first_name is "undefined"
     @getFirstNameInputEl()[0].value = first_name
+ 
+  getLastNameInputEl: ->
+    @$el.find('#last_name')
+
+  setLastName: (last_name) ->
+    last_name = "" if typeof last_name is "undefined"
+    @getFirstNameInputEl()[0].value = last_name
+
+  getUserNameInputEl: ->
+    @$el.find('#user_name')
+
+  setUserName: (user_name) ->
+    user_name = "" if typeof user_name is "undefined"
+    @getUserNameInputEl()[0].value = user_name
+  
+  getEmailInputEl: ->
+    @$el.find('#email')
+
+  setEmail: (email) ->
+    email = "" if typeof email is "undefined"
+    @getEmailInputEl()[0].value = email
+
+  getPasswordInputEl: ->
+    @$el.find('#password')
+
+  setPassword: (password) ->
+    password = "" if typeof password is "undefined"
+    @getPasswordInputEl()[0].value = password
+
+  getPasswordConfirmationInputEl: ->
+    @$el.find('#password_confirmation')
+
+  setPasswordConfirmation: (password_confirmation) ->
+    password_confirmation = "" if typeof password_confirmation is "undefined"
+    @getPasswordConfirmationInputEl()[0].value = password_confirmation
+
   
 
   # Events : 
@@ -75,7 +111,7 @@ class Idt.Views.Main.AddUserView extends Backbone.View
     @model.save(null, success: @onSaveUser)
 
   onSaveUser:(model) =>
-    #@collection.add(model.clone(), at: 0)
+    @collection.add(model.clone(), at: 0)
     model.clear()
 
   render: ->

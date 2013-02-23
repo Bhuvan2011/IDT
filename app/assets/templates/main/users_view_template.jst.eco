@@ -11,6 +11,15 @@
   </tr>
 </thead>
 <tbody>
+  <tr>
+    <td><input id="add_user_first_name" type="text" value="" /></td>
+    <td><input id="add_user_last_name" type="text" value="" /></td>
+    <td><input id="add_user_user_name" type="text" value="" /></td>
+    <td><input id="add_user_email" type="text" value="" /></td>
+    <td>
+      <button class="add-user">Add</button>
+    </td>
+  </tr>
   <% for user in @users: %>
     <tr>
       <td><%= user.attributes.first_name %></td>

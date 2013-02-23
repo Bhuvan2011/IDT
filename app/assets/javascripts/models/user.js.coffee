@@ -46,6 +46,13 @@ class Idt.Models.User extends Backbone.Model
   getFirstName: ->
     @get('first_name')
 
+  setUserName: (user_name) ->
+    @set('user_name', user_name)
+
+  getUserName: ->
+    @get('user_name')
+  
+
   setLastName: (last_name) ->
     @set('last_name', last_name)
 

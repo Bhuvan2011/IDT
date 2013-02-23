@@ -26,14 +26,16 @@ class Idt.Views.Main.UsersView extends Backbone.View
   # Properties :
 
   deleteUser: (id) ->
-    console.log("********")
-    console.log("the id is", id)
-    console.log("collection is ", @collection)
     user = @collection.get(id)
-    user.destroy(success: @onSuccessUserDestroy)
-
-  onSuccessUserDestroy: (model, resp) =>
-    @collection.remove(model)
+    @collection.remove(user)
+    ajax = $.ajax(
+      type: "DELETE"
+      url: "http://localhost:3000/users/#{user.id}"
+      data: {}
+    )
+    ajax.fail => alert "request failed"
+    ajax.success (user) =>
+      alert "deleted"
 
   render: ->
     $(@el).html(@template(users: @collection.models))
