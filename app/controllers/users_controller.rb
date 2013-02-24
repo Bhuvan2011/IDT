@@ -7,8 +7,10 @@ class UsersController <  ApplicationController
   def destroy
     if params["id"]
        @child = User.find_by_id(params["id"]).destroy
+       response.status = 200
+    else
+      response.status = 400
     end
-
   end
 
   def create

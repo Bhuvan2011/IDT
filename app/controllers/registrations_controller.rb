@@ -12,7 +12,6 @@ class RegistrationsController <  ApplicationController
 
   def login
     @user = User.find_by_email(params[:user][:email])
-    debugger
 
     if @user
       unless @user.valid_user_name?(params[:user][:user_name])

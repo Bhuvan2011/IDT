@@ -101,7 +101,8 @@ class Idt.Views.Main.UsersView extends Backbone.View
   onClickAddButton: ->
     @model.save(null, success: @onSaveUser)
 
-  onSaveUser:(model) =>
+  onSaveUser:(model, response, options) =>
+    model.setId(response.user.id)
     @collection.add(model.clone(), at: 0)
     model.clear()
   
@@ -121,7 +122,7 @@ class Idt.Views.Main.UsersView extends Backbone.View
     @collection.remove(user)
     ajax = $.ajax(
       type: "DELETE"
-      url: "http://localhost:3000/users/#{user.id}"
+      url: "http://localhost:3000/users/#{id}"
       data: {}
     )
     ajax.fail => alert "request failed"
