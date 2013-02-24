@@ -29,6 +29,12 @@ gem 'cancan'
 gem 'backbone-on-rails'
 gem 'rabl'
 gem 'oj'
+gem 'rspec-rails'
+gem 'factory_girl_rails'
+gem 'shoulda-matchers'
+gem 'faker'
+
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

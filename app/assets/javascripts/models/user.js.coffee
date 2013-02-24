@@ -15,6 +15,7 @@ class Idt.Models.User extends Backbone.Model
     first_name: ''
     last_name: ''
     user_name: ''
+    roles: ''
     admin: false
 
   initialize: ->
@@ -51,7 +52,12 @@ class Idt.Models.User extends Backbone.Model
 
   getUserName: ->
     @get('user_name')
-  
+
+  setRoles: (roles) ->
+    @set('roles', roles)
+
+  getRoles: ->
+    @get('roles')
 
   setLastName: (last_name) ->
     @set('last_name', last_name)
@@ -86,14 +92,14 @@ class Idt.Models.User extends Backbone.Model
 
   
   loginViaEmail: ->
-    password = @getPassword()
+    user_name = @getUserName()
     email = @getEmail()
     @url = ->
       "http://localhost:3000/registrations/login"
     ajax = $.ajax(
       type: "POST"
       url: "http://localhost:3000/registrations/login"
-      data: {"user":{"email":email,"password":password}}
+      data: {"user":{"email":email,"user_name":user_name}}
     )
     ajax.fail => alert "Wrong Credentials"
     ajax.success (data) =>

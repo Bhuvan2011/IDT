@@ -11,6 +11,7 @@ class Idt.Views.Main.UsersView extends Backbone.View
     'click .add-user' : 'onClickAddButton'
     'change #first_name': 'onChangeFirstName'
     'change #last_name': 'onChangeLastName'
+    'change #roles': 'onChangeRoles'    
     'change #user_name': 'onChangeUserName'
     'change #email': 'onChangeEmail'
 
@@ -22,6 +23,7 @@ class Idt.Views.Main.UsersView extends Backbone.View
     @model.bind('change:last_name', @onChangeModelLastName, @)
     @model.bind('change:user_name', @onChangeModelUserName, @)
     @model.bind('change:email', @onChangeModelEmail, @)
+    @model.bind('change:roles', @onChangeModelRoles, @)    
     @collection.on('reset', @render, @)
     @collection.on('add', @render, @)
     @collection.on('remove', @render, @)
@@ -39,7 +41,7 @@ class Idt.Views.Main.UsersView extends Backbone.View
 
   setLastName: (last_name) ->
     last_name = "" if typeof last_name is "undefined"
-    @getFirstNameInputEl()[0].value = last_name
+    @getLastNameInputEl()[0].value = last_name
 
   getUserNameInputEl: ->
     @$el.find('#user_name')
@@ -54,6 +56,14 @@ class Idt.Views.Main.UsersView extends Backbone.View
   setEmail: (email) ->
     email = "" if typeof email is "undefined"
     @getEmailInputEl()[0].value = email
+
+  getRolesInputEl: ->
+    @$el.find('#roles')
+
+  setRoles: (roles) ->
+    roles = "" if typeof roles is "undefined"
+    @getEmailInputEl()[0].value = roles
+  
 
 
   # Event Handlers:
@@ -70,6 +80,9 @@ class Idt.Views.Main.UsersView extends Backbone.View
   onChangeEmail:(event) ->
     @model.setEmail(event.currentTarget.value)
 
+  onChangeRoles: (event) ->
+    @model.setRoles(event.currentTarget.value)
+
   onChangeModelFirstName: (model) ->
     @setFirstName(model.getFirstName())
 
@@ -81,6 +94,9 @@ class Idt.Views.Main.UsersView extends Backbone.View
 
   onChangeModelEmail: (model) ->
     @setEmail(model.getEmail()) 
+
+  onChangeModelRoles: (model) ->
+    @setRoles(model.getRoles()) 
 
   onClickAddButton: ->
     @model.save(null, success: @onSaveUser)

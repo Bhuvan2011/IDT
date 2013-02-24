@@ -7,6 +7,7 @@
     <th>Last Name</th>
     <th>UserName</th>
     <th>Email</th>
+    <th>Roles</th>
     <th>Action</th>
   </tr>
 </thead>
@@ -16,6 +17,7 @@
     <td><input id="last_name" type="text" value="" /></td>
     <td><input id="user_name" type="text" value="" /></td>
     <td><input id="email" type="text" value="" /></td>
+    <td><input id="roles" type="text" value="" /></td>    
     <td>
       <button class="add-user">Add</button>
     </td>
@@ -26,6 +28,7 @@
       <td><%= user.attributes.last_name %></td>
       <td><%= user.attributes.user_name %></td>
       <td><%= user.attributes.email %></td> 
+      <td><%= user.attributes.roles %></td>
       <td>
         <button class="delete-user" data-user-id="<%= user.attributes.id%>">Remove</button>
       </td>

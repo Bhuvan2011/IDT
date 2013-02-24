@@ -19,6 +19,10 @@
   </div>
 
   <div>
+    <input id="roles" type="text" placeholder="Roles saperated by comma" />
+  </div>
+
+  <div>
     <button class="add-user">add</button>
   </div>
 </div>

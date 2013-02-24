@@ -5,7 +5,7 @@ class Idt.Views.Main.LoginView extends Backbone.View
 
   events:
     'change #email': 'onChangeEmail'
-    'change #password': 'onChangePassword'
+    'change #user_name': 'onChangeUserName'
     'click #login_button': 'onClickSubmit'
 
   initialize: ->
@@ -29,8 +29,8 @@ class Idt.Views.Main.LoginView extends Backbone.View
   getEmailInputEl: ->
     @$el.find('#email')
 
-  getPasswordInputEl: ->
-    @$el.find('#password')
+  getUserNameInputEl: ->
+    @$el.find('#user_name')
 
   getLoginButtonEl: ->
     @$el.find('#login_button')
@@ -43,8 +43,8 @@ class Idt.Views.Main.LoginView extends Backbone.View
   onChangeEmail: (event) ->
     @model.setEmail(event.currentTarget.value)
 
-  onChangePassword: (event) ->
-    @model.setPassword(event.currentTarget.value)
+  onChangeUserName: (event) ->
+    @model.setUserName(event.currentTarget.value)
 
   onClickSubmit: (event) ->
     console.log('onClickSubmit')

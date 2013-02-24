@@ -5,7 +5,7 @@
     <input id="email" placeholder="Email Address" type="email" value="" />
   </div>
   <div>
-    <input id="password" placeholder="Password" type="password" value="" />
+    <input id="user_name" placeholder="User Name" type="text" value="" />
   </div>
   <div>
     <button class="btn" id="login_button">Login</button>
