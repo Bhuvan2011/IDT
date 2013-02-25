@@ -74,7 +74,6 @@ class Idt.Views.Main.RegistrationView extends Backbone.View
     event.preventDefault()
     console.log("the model is ", @model)
     @model.register()
-    Backbone.Mediator.pub('render:login')
 
   onRegistrationError: (event) ->
     console.log('onRegistrationError', event)

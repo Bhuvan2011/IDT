@@ -8,7 +8,6 @@ class Idt.Views.Main.LandingView extends Backbone.View
     'click #registration_button': 'onClickRegistrationButton'
 
   initialize: ->
-    Backbone.Mediator.sub('render:login', @renderLogin, @)
     @model = new Idt.Models.Main()
     @registrationView = new Idt.Views.Main.RegistrationView(model: @model.getCurrentUser())
     @loginView = new Idt.Views.Main.LoginView(model: @model.getCurrentUser())
