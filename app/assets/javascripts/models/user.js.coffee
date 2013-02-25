@@ -90,6 +90,19 @@ class Idt.Models.User extends Backbone.Model
   getPasswordConfirmation: ->
     @get('password_confirmation')
 
+  update: ->
+    @url = -> "http://localhost:3000/users/#{@id}"
+    @save()
+    #ajax = $.ajax(
+    # type: "PUT"
+    #  url: "http://localhost:3000/users/#{@model.id}"
+    #  data: { first_name: @model.getFirstName(),last_name: @model.getLastName(),user_name: @model.getUserName(),email: @model.getEmail(),roles: @model.getRoles()}
+    #)
+    #ajax.fail => alert "request failed"
+    #ajax.success (user) => 
+    #  console.log("the new datais", user)
+      #@model.save(null, success: @onSaveUser)
+
   
   loginViaEmail: ->
     user_name = @getUserName()

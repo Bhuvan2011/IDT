@@ -3,19 +3,19 @@
   <span id="user_errors"></span>
   
   <div>
-    <input id="first_name" type="text" placeholder="First Name (optional)" />
+    <input id="first_name" type="text" placeholder="First Name (required)" />
   </div>
 
    <div>
-    <input id="last_name" type="text" placeholder="Last Name (optional)" />
+    <input id="last_name" type="text" placeholder="Last Name (required)" />
   </div>
 
  <div>
-    <input id="user_name" type="text" placeholder="User Name (optional)" />
+    <input id="user_name" type="text" placeholder="User Name (required)" />
   </div>
 
  <div>
-    <input id="email" type="text" placeholder="Email" />
+    <input id="email" type="text" placeholder="Email(required)" />
   </div>
 
   <div>
@@ -23,6 +23,6 @@
   </div>
 
   <div>
-    <button class="add-user">add</button>
+    <button class="add-user">Add User Page</button>
   </div>
 </div>

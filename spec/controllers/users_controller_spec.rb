@@ -22,8 +22,20 @@ describe UsersController do
         assigns(:users){ should =~ []}
       end
     end
+  end # end_index
 
-  end
+  describe :destroy do
+
+    let(:user){ create(:user) }
+    let(:output){}
+    subject{ output }
+
+    context "when the correct user id is passed" do
+      let(:output){ delete(:destroy, id: user.id) }
+      its(:status){ should == 200 }
+    end
+
+  end # end_destroy
 
    describe :create do
 
@@ -74,6 +86,84 @@ describe UsersController do
     end
 
   end
+
+  describe :update do
+    let(:user) { raise ArgumentError }
+    let(:id){ user.id }
+    let(:first_name) { 'New Firstname' }
+    let(:last_name) { 'New Lastname' }
+    let(:email) { 'new@email.com' }
+    let(:user_name) { 'New Location, NY' }
+    let(:roles) { 'adim,user' }
+
+    let(:put_params) {{
+      id: id,
+      first_name: first_name,
+      last_name: last_name,
+      email: email,
+      user_name: user_name,
+      roles: roles
+    }}
+
+    let(:output) { put(:update, put_params) }
+
+    subject { output }
+
+    before {
+      output
+      user.reload
+    }
+
+    context 'when user is not registered' do
+      let(:user) { create(:user) }
+
+      context 'when parameters are correct' do
+        it { should be_success }
+
+        context 'user' do
+          subject { user }
+          its(:first_name){ should == first_name }
+          its(:last_name){ should == last_name }
+          its(:email){ should == email }
+        end
+      end
+
+      context 'when parameters are not correct' do
+        let(:id) { '1232' }
+        it { should_not be_success }
+        its(:code) { should == '400' }
+
+        context 'user' do
+          subject { user }
+        end
+      end
+
+
+    end # when user is not registered
+
+    context 'when user is registered' do
+      let(:user) { create(:user) }
+
+      context 'when parameters are correct' do
+        it { should be_success }
+
+        context 'user' do
+          subject { user }
+          its(:first_name){ should == first_name }
+          its(:last_name){ should == last_name }
+        end
+      end # params are correct
+
+
+        context 'user' do
+          subject { user }
+          its(:first_name){ should == first_name }
+          its(:last_name){ should == last_name }
+        end
+      end
+
+    end # user is registered
+
 
 end # RegistrationController
 

@@ -7,9 +7,7 @@ class Idt.Views.Main.RegistrationView extends Backbone.View
     'change #first_name': 'onChangeFirstName'
     'change #last_name':  'onChangeLastName'
     'change #email': 'onChangeEmail'
-    'change #password': 'onChangePassword'
-    'change #password_confirmation' : 'onChangePasswordConfirmation'
-    'click  #registration_button': 'onClickRegistration'
+    'change #user_name': 'onChangeUserName'
     
   initialize: ->
     @initModelBindings()
@@ -42,11 +40,8 @@ class Idt.Views.Main.RegistrationView extends Backbone.View
   getRegistrationButtonEl: ->
     @$el.find('#registration_button')
 
-  getPasswordEl: ->
-    @$el.find('#password')
-
-  getPasswordConfirmationEl: ->
-    @$el.find('#password_confirmation')
+  getUserNameEl: ->
+    @$el.find('#user_name')
 
 
   # View events:
@@ -60,11 +55,9 @@ class Idt.Views.Main.RegistrationView extends Backbone.View
   onChangeEmail: (event) ->
     @model.setEmail(event.currentTarget.value)
 
-  onChangePassword: (event) ->
-    @model.setPassword(event.currentTarget.value)
+  onChangeUserName: (event) ->
+    @model.setUserName(event.currentTarget.value)
 
-  onChangePasswordConfirmation: (event) ->
-    @model.setPasswordConfirmation(event.currentTarget.value)
 
     
   # Model events:
@@ -81,6 +74,7 @@ class Idt.Views.Main.RegistrationView extends Backbone.View
     event.preventDefault()
     console.log("the model is ", @model)
     @model.register()
+    Backbone.Mediator.pub('render:login')
 
   onRegistrationError: (event) ->
     console.log('onRegistrationError', event)

@@ -1,0 +1,33 @@
+<div class="edit_user_form">
+  <h4>Edit User</h4>
+  <span id="user_errors"></span>
+  
+  <div>
+    <input id="first_name" type="text" value="<%= @model.first_name %>" />
+  </div>
+
+   <div>
+    <input id="last_name" type="text" value="<%= @model.last_name %>" />
+  </div>
+
+ <div>
+    <input id="user_name" type="text" value="<%= @model.user_name %>"  />
+  </div>
+
+ <div>
+    <input id="email" type="text" value="<%= @model.email %>"  />
+  </div>
+
+  <div>
+    <input id="roles" type="text" value="<%= @model.roles %>" />
+  </div>
+
+  <div>
+    <button class="update">update</button>
+  </div>
+
+  <div>
+     <button class="delete" data-user-id="<%= @model.id%>">Delete</button>
+  </div>
+
+</div>

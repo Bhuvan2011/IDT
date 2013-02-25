@@ -13,11 +13,11 @@
 </thead>
 <tbody>
   <tr>
-    <td><input id="first_name" type="text" value="" /></td>
-    <td><input id="last_name" type="text" value="" /></td>
-    <td><input id="user_name" type="text" value="" /></td>
-    <td><input id="email" type="text" value="" /></td>
-    <td><input id="roles" type="text" value="" /></td>    
+    <td><input id="first_name" type="text" placeholder="First Name (required)" /></td>
+    <td><input id="last_name" type="text" placeholder="Last Name (required)" /></td>
+    <td><input id="user_name" type="text" placeholder="User Name (required)" /></td>
+    <td><input id="email" type="text" placeholder="Email (required)" /></td>
+    <td><input id="roles" type="text"  /></td>    
     <td>
       <button class="add-user">Add</button>
     </td>
@@ -31,6 +31,7 @@
       <td><%= user.attributes.roles %></td>
       <td>
         <button class="delete-user" data-user-id="<%= user.attributes.id%>">Remove</button>
+        <button class="edit-user" data-user-id="<%= user.attributes.id%>">Edit</button>        
       </td>
     </tr>
   <% end %>

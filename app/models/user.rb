@@ -29,5 +29,16 @@ class User < ActiveRecord::Base
     self.user_name == user_name
   end
 
+  def add_roles(roles)
+     roles.split(',').each do |role_input|
+       if (@role =  Role.find_by_name(role_input) ) != nil
+         self.roles << @role if self.has_role?(@role)
+       else
+         @new_role = Role.create!(name: role_input)
+         self.roles <<  @new_role
+       end
+     end
+  end
+
 
 end

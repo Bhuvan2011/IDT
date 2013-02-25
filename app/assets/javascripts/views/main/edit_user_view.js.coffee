@@ -1,40 +1,26 @@
 Idt.Views.Main ||= {}
 
-class Idt.Views.Main.UsersView extends Backbone.View
-  template:  JST['main/users_view_template']
-  template1: JST['main/add_user_view_template']
-  template2: JST['main/edit_user_view_template'] 
+class Idt.Views.Main.EditUserView extends Backbone.View
+  template: JST['main/edit_user_view_template'] 
 
-  
-
-  events:
-    'click .delete-user' : 'onClickDeleteUser'
-    'click .edit-user' : 'onClickEditUser'
-    'click .add-user-button' : 'onClickAddUserButton'    
-    'click .add-user' : 'onClickAddButton'
+  events: ->
+    'click .update' : 'onClickUpdateButton'
+    'click .delete' : 'onClickDeleteButton'
     'change #first_name': 'onChangeFirstName'
     'change #last_name': 'onChangeLastName'
-    'change #roles': 'onChangeRoles'    
     'change #user_name': 'onChangeUserName'
     'change #email': 'onChangeEmail'
-
-
+    
   initialize: ->
-    @addUserView = new Idt.Views.Main.AddUserView()
-    @model = new Idt.Models.User()
-
+    console.log('initialize the add user form view')
     @model.bind('change:first_name', @onChangeModelFirstName, @)
     @model.bind('change:last_name', @onChangeModelLastName, @)
     @model.bind('change:user_name', @onChangeModelUserName, @)
     @model.bind('change:email', @onChangeModelEmail, @)
-    @model.bind('change:roles', @onChangeModelRoles, @)    
-    @collection.on('reset', @render, @)
-    @collection.on('add', @render, @)
-    @collection.on('remove', @render, @)
-    Backbone.Mediator.sub('reset:collection', @render, @)
-    Backbone.Mediator.sub('delete:user', @deleteUser, @)
+    @model.bind('change:roles', @onChangeModelRoles, @)
+ 
+  # Properties:
 
-  # Properties :
   getFirstNameInputEl: ->
     @$el.find('#first_name')
 
@@ -47,7 +33,7 @@ class Idt.Views.Main.UsersView extends Backbone.View
 
   setLastName: (last_name) ->
     last_name = "" if typeof last_name is "undefined"
-    @getLastNameInputEl()[0].value = last_name
+    @getFirstNameInputEl()[0].value = last_name
 
   getUserNameInputEl: ->
     @$el.find('#user_name')
@@ -71,8 +57,10 @@ class Idt.Views.Main.UsersView extends Backbone.View
     @getEmailInputEl()[0].value = roles
   
 
-
-  # Event Handlers:
+  # Events : 
+  #
+  onChangeRoles: (event) ->
+    @model.setRoles(event.currentTarget.value)
 
   onChangeFirstName:(event) ->
     @model.setFirstName(event.currentTarget.value)
@@ -86,8 +74,11 @@ class Idt.Views.Main.UsersView extends Backbone.View
   onChangeEmail:(event) ->
     @model.setEmail(event.currentTarget.value)
 
-  onChangeRoles: (event) ->
-    @model.setRoles(event.currentTarget.value)
+  onChangePassword:(event) ->
+    @model.setPassword(event.currentTarget.value)
+
+  onChangePasswordConfirmation:(event) ->
+    @model.setPasswordConfirmation(event.currentTarget.value)
 
   onChangeModelFirstName: (model) ->
     @setFirstName(model.getFirstName())
@@ -99,51 +90,25 @@ class Idt.Views.Main.UsersView extends Backbone.View
     @setUserName(model.getUserName())
 
   onChangeModelEmail: (model) ->
-    @setEmail(model.getEmail()) 
+    @setEmail(model.getEmail())
 
   onChangeModelRoles: (model) ->
     @setRoles(model.getRoles())
 
-  onClickEditUser: (event) ->
+  onClickDeleteButton: (event) ->
     id = event.currentTarget.dataset['userId']
-    model = @collection.get(id)  
-    @editUserView = new Idt.Views.Main.EditUserView(model: model)  
-    @$el.html(@editUserView.render().el)
-    #@render()
+    Backbone.Mediator.pub('delete:user',id )    
+  
+  onClickUpdateButton: ->
+    @model.update()
+    Backbone.Mediator.pub('reset:collection')
 
-  onClickAddButton: ->
-    @model.save(null, success: @onSaveUser)
-
-  onSaveUser:(model, response, options) =>
-    model.setId(response.user.id)
+  onSaveUser:(model) =>
     @collection.add(model.clone(), at: 0)
     model.clear()
-  
 
-  onClickAddUserButton: ->
-    console.log("add user")
-    @$el.html(@template1())
-
-  onClickDeleteUser: (event) ->
-    id = event.currentTarget.dataset['userId']
-    @deleteUser(id)
+  render: ->
+    @$el.html(@template(model: @model.attributes))
+    @
 
 
-  # Methods :
-
-  deleteUser: (id) =>
-    console.log("**************")
-    user = @collection.get(id)
-    @collection.remove(user)
-    ajax = $.ajax(
-      type: "DELETE"
-      url: "http://localhost:3000/users/#{id}"
-      data: {}
-    )
-    ajax.fail => alert "request failed"
-    ajax.success (user) =>
-
-  render: =>
-    $(@el).html(@template(users: @collection.models))
-    @$el.find('#products').dataTable()
-    @ 

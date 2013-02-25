@@ -3,9 +3,6 @@
   First Name: <input id="first_name" type="text" /><br/>
   Last Name: <input id="last_name" type="text" /><br/>
   Email: <input id="email" type="text" /><br/>
-  <%# unless @user.logged_in: %>
-    Password: <input id= "password" type="password"><br/>
-    Confirm: <input id="password_confirmation" type="password"><br/>
-  <% #end %>
+  User Name: <input id="user_name" type="text" /><br/>  
   <button id="registration_button">Register</button>
 </div>

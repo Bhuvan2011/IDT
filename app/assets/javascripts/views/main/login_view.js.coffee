@@ -10,6 +10,7 @@ class Idt.Views.Main.LoginView extends Backbone.View
 
   initialize: ->
     console.log("Log in View has been Initialized")
+    @notAdminView = new Idt.Views.Main.NotAdminView()
     @users = new Idt.Collections.Users()
     @users.fetch({success: @onFetchSuccess})
     console.log(@users)
@@ -38,6 +39,8 @@ class Idt.Views.Main.LoginView extends Backbone.View
   adminPage: (model) =>
     if model.isLoggedIn() and model.isAdmin()
       @$el.html(@usersView.render().el)
+    else
+      $(@el).append(@notAdminView.render().el)
 
   # Events:
   onChangeEmail: (event) ->
